@@ -16,7 +16,7 @@ class MyHttpHandler {
         console.log(`::Request version : HTTP/${this.req.httpVersion}`);
     }
 
-    send_http_response(){
+    send_http_response_header(){
         this.res.writeHead(200, {'Content-Type': 'text/html'});
     }
 
@@ -24,7 +24,7 @@ class MyHttpHandler {
         console.log("## do_GET() activated.");
 
         this.print_http_request_detail();
-        this.send_http_response();
+        this.send_http_response_header();
 
         const parsedUrl = url.parse(this.req.url, true);
 
