@@ -1,7 +1,7 @@
 const http = require('http');
 const url = require('url');
 
-class MyHttpServer {
+class MyHttpHandler {
     constructor(req, res) {
         this.req = req;
         this.res = res;
@@ -101,7 +101,7 @@ const server_name = "localhost";
 const server_port = 8080;
 
 const webServer = http.createServer((req, res) => {
-    const myServer = new MyHttpServer(req, res);
+    const handler = new MyHttpHandler(req, res);
 
     if (req.method === "GET") handler.do_GET();
     else if (req.method === "POST") handler.do_POST();
