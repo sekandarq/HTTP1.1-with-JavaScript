@@ -97,7 +97,7 @@ class MyHttpHandler {
 }
 
 // HTTP Server Setup
-const server_name = "localhost";
+const server_name = "127.0.0.1";
 const server_port = 8080;
 
 const webServer = http.createServer((req, res) => {
