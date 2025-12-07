@@ -67,24 +67,24 @@ const server = http.createServer((req, res) => {
     const member_id = match[1];
 
     // Handle GET request
-    if (req.method === 'GET') {
+    if (req.method === "GET") {
         const result = myManager.read(member_id);
-        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify(result));
     }
 
     // Handle DELETE request
-    else if (req.method === 'DELETE') {
+    else if (req.method === "DELETE") {
         const result = myManager.delete(member_id);
-        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify(result));
     }
 
     // Handle POST and PUT requests
-    else if (req.method === 'POST' || req.method === 'PUT') {
-        let body = '';
+    else if (req.method === "POST" || req.method === "PUT") {
+        let body = "";
 
-        req.on ('data', chunk =>{
+        req.on ("data", chunk =>{
             body += chunk.toString();
         });
 
@@ -94,25 +94,25 @@ const server = http.createServer((req, res) => {
 
             let result;
 
-            if (req.method === 'POST') {
+            if (req.method === "POST") {
                 result = myManager.create (member_id, value);
             } else {
                 result = myManager.update(member_id, value);
             }
 
-            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.writeHead(200, { "Content-Type": "application/json" });
             res.end(JSON.stringify(result));
         });
     }
 
     // Invalid HTTP method
     else {
-        res.writeHead(405, { 'Content-Type': 'application/json' });
+        res.writeHead(405, { "Content-Type": "application/json" });
         res.end (JSON.stringify({ error: "Method not allowed" }));
     }
 });
 
 // Start server
-server.listen(3000, () => {
-    console.log('Membership API server running at http://localhost:3000/');
+server.listen(5000, () => {
+    console.log("Membership API server running at http://127.0.0.1:5000/");
 });
